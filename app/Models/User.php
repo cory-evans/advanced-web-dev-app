@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Forum\ForumPost;
+use App\Models\Forum\ForumPostComment;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -50,5 +51,8 @@ class User extends Authenticatable
 
     public function forumPost() {
         return $this->hasMany(ForumPost::class);
+    }
+    public function forumPostComment() {
+        return $this->hasMany(ForumPostComment::class);
     }
 }
