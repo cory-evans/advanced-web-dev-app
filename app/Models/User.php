@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Forum\ForumPost;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -45,5 +46,9 @@ class User extends Authenticatable
 
     public function isAdmin() {
         return $this->role === 'admin';
+    }
+
+    public function forumPost() {
+        return $this->hasMany(ForumPost::class);
     }
 }
