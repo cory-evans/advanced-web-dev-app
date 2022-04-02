@@ -20,5 +20,9 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+Route::get('/forum', function () {
+    return view('forum');
+})->middleware(['auth'])->name('forum');
 
 require __DIR__.'/auth.php';
+require __DIR__.'/admin.php';

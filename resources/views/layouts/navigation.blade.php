@@ -17,6 +17,11 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('forum')" :active="request()->routeIs('forum')">
+                        {{ __('Forum') }}
+                    </x-nav-link>
+                </div>
                 @endauth
                 
                 <div class="flex-1"></div>
@@ -51,6 +56,9 @@
                     </x-slot>
 
                     <x-slot name="content">
+                        <x-dropdown-link :href="route('admin.index')">
+                            Admin Panel
+                        </x-dropdown-link>
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
