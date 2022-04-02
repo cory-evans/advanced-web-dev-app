@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ForumPostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,9 +21,11 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
-Route::get('/forum', function () {
-    return view('forum');
-})->middleware(['auth'])->name('forum');
+
+Route::prefix('/forum')->group(function() {
+    Route::get('/', [ForumPostController::class, 'index'])
+        ->name('forum.index');
+});
 
 require __DIR__.'/auth.php';
 require __DIR__.'/admin.php';

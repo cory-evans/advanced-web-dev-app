@@ -18,12 +18,12 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('forum')" :active="request()->routeIs('forum')">
+                    <x-nav-link :href="route('forum.index')" :active="request()->routeIs('forum')">
                         {{ __('Forum') }}
                     </x-nav-link>
                 </div>
                 @endauth
-                
+
                 <div class="flex-1"></div>
                 @guest
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
@@ -121,7 +121,7 @@
                     {{ __('Log In') }}
                 </x-responsive-nav-link>
             </div>
-            
+
             @endguest
         </div>
     </div>
