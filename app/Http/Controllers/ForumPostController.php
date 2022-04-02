@@ -5,17 +5,30 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreForumPostRequest;
 use App\Http\Requests\UpdateForumPostRequest;
 use App\Models\Forum\ForumPost;
+use Illuminate\Http\Request;
 
 class ForumPostController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
+     * @param \Illuminate\Http\Request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('forum.index', ['posts' => ForumPost::all()]);
+        $pageNumStr = $request->query('page', '1');
+        try {
+            $page = intval($pageNumStr);
+        } catch (\Throwable $th) {
+            $page = 1;
+        }
+
+        $amountPerPage = 25;
+        $skip = ($amountPerPage * $page) - $amountPerPage;
+        return view('forum.index', [
+            'posts' => ForumPost::orderBy('created_at')->skip($skip)->take($amountPerPage)->get()
+        ]);
     }
 
     /**
