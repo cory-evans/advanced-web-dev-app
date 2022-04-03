@@ -18,13 +18,19 @@ Route::get('/', function () {
     return view('welcome');
 })->name('index');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::prefix('/shop')->group(function () {
+    Route::get('/', function() {
+        return view('shop.index');
+    })->name('shop');
+});
 
 Route::prefix('/forum')->group(function() {
     Route::get('/', [ForumPostController::class, 'index'])
-        ->name('forum.index');
+        ->name('forum');
+    Route::get('/post', [ForumPostController::class, 'create'])
+        ->name('forum.createPost');
+    Route::get('/post/{forumPost}', [ForumPostController::class, 'show'])
+        ->name('forum.showPost');
 });
 
 require __DIR__.'/auth.php';

@@ -60,7 +60,7 @@ class ForumPostController extends Controller
      */
     public function show(ForumPost $forumPost)
     {
-        //
+        return view('forum.post-show', ['post' => $forumPost]);
     }
 
     /**

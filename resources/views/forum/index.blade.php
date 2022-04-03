@@ -4,14 +4,23 @@
             {{ __('Forum Posts') }}
         </h2>
     </x-slot>
-    <ul>
+    <ul class="max-w-3xl mx-auto my-4 flex flex-col gap-3">
         @foreach ($posts as $post)
-        <li>
-            {{ $post->title }}
-            <br>
-            {{ $post->body }}
-            <br>
-            {{ $post->user->name }}
+        <li class="bg-white rounded shadow p-4">
+            <div class="hover:cursor-pointer"
+                onclick="window.location = `{{ route('forum.showPost', ['forumPost' => $post->id]) }}`"
+            >
+                <div class="flex flex-col">
+                    <h2 class="text-sm text-gray-500">Post by <a href="{{ route('index') }}" class="underline">{{ $post->user->name }}</a></h2>
+                    <h1 class="text-lg">{{ $post->title }}</h1>
+
+                    <hr class="my-1">
+
+                    <div>
+                        {{ $post->body }}
+                    </div>
+                </div>
+            </div>
         </li>
         @endforeach
     </ul>
