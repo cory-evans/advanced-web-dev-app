@@ -5,10 +5,11 @@
         </h2>
     </x-slot>
     <ul class="max-w-3xl mx-auto my-4 flex flex-col gap-3">
+        <x-forum.page-control :page=$page />
         @foreach ($posts as $post)
         <li class="bg-white rounded shadow p-4">
             <div class="hover:cursor-pointer"
-                onclick="window.location = `{{ route('forum.showPost', ['forumPost' => $post->id]) }}`"
+            onclick="window.location = `{{ route('forum.showPost', ['forumPost' => $post->id]) }}`"
             >
                 <div class="flex flex-col">
                     <h2 class="text-sm text-gray-500">Post by <a href="{{ route('index') }}" class="underline">{{ $post->user->name }}</a></h2>
@@ -23,5 +24,6 @@
             </div>
         </li>
         @endforeach
+        <x-forum.page-control :page=$page />
     </ul>
 </x-app-layout>

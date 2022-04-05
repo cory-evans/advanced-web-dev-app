@@ -27,7 +27,8 @@ class ForumPostController extends Controller
         $amountPerPage = 25;
         $skip = ($amountPerPage * $page) - $amountPerPage;
         return view('forum.index', [
-            'posts' => ForumPost::orderBy('created_at')->skip($skip)->take($amountPerPage)->get()
+            'posts' => ForumPost::orderBy('created_at')->skip($skip)->take($amountPerPage)->get(),
+            'page' => $page
         ]);
     }
 
