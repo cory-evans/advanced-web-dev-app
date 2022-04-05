@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ForumPostCommentController;
 use App\Http\Controllers\ForumPostController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,9 +29,11 @@ Route::prefix('/forum')->group(function() {
     Route::get('/', [ForumPostController::class, 'index'])
         ->name('forum');
     Route::get('/post', [ForumPostController::class, 'create'])
-        ->name('forum.createPost');
+        ->name('forum.post.create');
     Route::get('/post/{forumPost}', [ForumPostController::class, 'show'])
-        ->name('forum.showPost');
+        ->name('forum.post.show');
+    Route::post('/post/{forumPost}/comment', [ForumPostCommentController::class, 'store'])
+        ->name('forum.post.comment.store');
 });
 
 require __DIR__.'/auth.php';

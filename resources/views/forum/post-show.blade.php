@@ -1,13 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
-        <button onclick="window.history.back()">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight flex items-center space-x-3">
-                <x-icons.back-arrow class="h-[1em]"></x-icons.back-arrow>
-                <span>
-                    {{ __('Post') }}
-                </span>
-            </h2>
-        </button>
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight flex items-center space-x-3">
+            {{ __('Post') }}
+        </h2>
     </x-slot>
     <div class="max-w-3xl mx-auto my-4 flex flex-col gap-4">
         <div class="bg-white rounded shadow p-4">
@@ -21,6 +16,22 @@
                     {{ $post->body }}
                 </div>
             </div>
+        </div>
+        <div class="bg-white rounded shadow p-4">
+            <form action="{{ route('forum.post.comment.store', ['forumPost' => $post->id]) }}" method="POST">
+                @csrf
+
+                <div class="flex space-x-2 w-full">
+                    <input class="flex-1 px-2 py-1 placeholder-shown:italic shadow-none border-b border-b-black focus:outline-none"
+                        placeholder="Write a comment..."
+                        name="body"
+                    />
+
+                    <x-button>
+                        Send
+                    </x-button>
+                </div>
+            </form>
         </div>
         <div class="bg-white rounded shadow p-4">
             <ul class="flex flex-col gap-4 diivde-y divide-gray-500">

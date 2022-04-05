@@ -9,7 +9,7 @@
         @foreach ($posts as $post)
         <li class="bg-white rounded shadow p-4">
             <div class="hover:cursor-pointer"
-            onclick="window.location = `{{ route('forum.showPost', ['forumPost' => $post->id]) }}`"
+            onclick="window.location = `{{ route('forum.post.show', ['forumPost' => $post->id]) }}`"
             >
                 <div class="flex flex-col">
                     <h2 class="text-sm text-gray-500">Post by <a href="{{ route('index') }}" class="underline">{{ $post->user->name }}</a></h2>
