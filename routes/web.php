@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ForumPostCommentController;
 use App\Http\Controllers\ForumPostController;
+use App\Http\Controllers\ShopProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,14 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('index');
-
+Route::get('/', [ShopProductController::class, 'index'])->name('shop');
 Route::prefix('/shop')->group(function () {
-    Route::get('/', function() {
-        return view('shop.index');
-    })->name('shop');
+    Route::get('/{shopProduct}', [ShopProductController::class, 'show'])->name('shop.product.show');
 });
 
 Route::prefix('/forum')->group(function() {

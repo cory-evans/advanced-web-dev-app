@@ -5,17 +5,22 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    @auth
-                    You're logged in!
-                    @else
-                    You are viewing the shop as a guest.
-                    @endauth
-                </div>
-            </div>
-        </div>
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <h1 class="border-b border-black font-semibold text-2xl my-2">Featured Items</h1>
+        <ul class="grid gap-2 grid-cols-2 md:grid-cols-4 2xl:grid-cols-6">
+            @foreach ($featured as $item)
+            <a class="flex flex-col" href="{{ route('shop.product.show', ['shopProduct' => $item->id]) }}">
+                <li class="flex-1 flex flex-col items-center bg-white rounded shadow p-2">
+                    <div class="flex justify-around">
+                        <img src="{{ $item->image_url }}" alt="{{ $item->title }}" loading="lazy"
+                            class="object-cover w-40 h-40"
+                        />
+                    </div>
+                    <span class="text-center flex-1">{{ $item->title }}</span>
+                    <span class="font-bold">${{ $item->displayPrice() }}</span>
+                </li>
+            </a>
+            @endforeach
+        </ul>
     </div>
 </x-app-layout>
