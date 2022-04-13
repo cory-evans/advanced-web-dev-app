@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ForumPostCommentController;
 use App\Http\Controllers\ForumPostController;
 use App\Http\Controllers\ShopProductController;
@@ -19,6 +20,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ShopProductController::class, 'index'])->name('shop');
 Route::prefix('/shop')->group(function () {
     Route::get('/{shopProduct}', [ShopProductController::class, 'show'])->name('shop.product.show');
+});
+
+Route::prefix('/account')->group(function() {
+    Route::get('/{user}', [AccountController::class, 'show'])
+        ->name('account.show');
 });
 
 Route::prefix('/forum')->group(function() {

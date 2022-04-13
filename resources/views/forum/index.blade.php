@@ -12,7 +12,7 @@
             onclick="window.location = `{{ route('forum.post.show', ['forumPost' => $post->id]) }}`"
             >
                 <div class="flex flex-col">
-                    <h2 class="text-sm text-gray-500">Post by <a href="{{ route('index') }}" class="underline">{{ $post->user->name }}</a></h2>
+                    <h2 class="text-sm text-gray-500">Post by <a href="{{ route('account.show', ['user' => $post->user]) }}" class="underline">{{ $post->user->name }}</a></h2>
                     <h1 class="text-lg">{{ $post->title }}</h1>
 
                     <hr class="my-1">

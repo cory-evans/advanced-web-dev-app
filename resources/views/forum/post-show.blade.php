@@ -7,7 +7,7 @@
     <div class="max-w-3xl mx-auto my-4 flex flex-col gap-4">
         <div class="bg-white rounded shadow p-4">
             <div class="flex flex-col">
-                <h2 class="text-sm text-gray-500">Post by <a href="{{ route('index') }}" class="underline">{{ $post->user->name }}</a></h2>
+                <h2 class="text-sm text-gray-500">Post by <a href="{{ route('account.show', ['user' => $post->user]) }}" class="underline">{{ $post->user->name }}</a></h2>
                 <h1 class="text-lg">{{ $post->title }}</h1>
 
                 <hr class="my-1">
@@ -37,7 +37,7 @@
             <ul class="flex flex-col gap-4 diivde-y divide-gray-500">
                 @forelse ($post->forumPostComment as $comment)
                 <li>
-                    <h2 class="text-sm text-gray-500">Comment by <a href="{{ route('index') }}" class="underline">{{ $comment->user->name }}</a></h2>
+                    <h2 class="text-sm text-gray-500">Comment by <a href="{{ route('account.show', ['user' => $comment->user]) }}" class="underline">{{ $comment->user->name }}</a></h2>
                     <div>
                         {{ $comment->body }}
                     </div>

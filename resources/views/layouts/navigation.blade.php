@@ -59,6 +59,9 @@
                             Admin Panel
                         </x-dropdown-link>
                         @endif
+                        <x-dropdown-link :href="route('account.show', ['user' => Auth::user()])">
+                            My Account
+                        </x-dropdown-link>
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
