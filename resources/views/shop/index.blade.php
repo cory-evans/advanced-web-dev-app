@@ -7,7 +7,7 @@
 
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <h1 class="border-b border-black font-semibold text-2xl my-2">Featured Items</h1>
-        <ul class="grid gap-2 grid-cols-2 md:grid-cols-4 2xl:grid-cols-6">
+        <ul class="grid gap-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 2xl:grid-cols-6">
             @foreach ($featured as $item)
             <a class="flex flex-col" href="{{ route('shop.product.show', ['shopProduct' => $item->id]) }}">
                 <li class="flex-1 flex flex-col items-center bg-white rounded shadow p-2">
