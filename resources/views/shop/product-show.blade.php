@@ -17,10 +17,10 @@
             </div>
 
             <div class="bg-white rounded shadow p-2 flex flex-col">
-                <span class="font-bold w-full text-center text-xl">${{ $product->displayPrice() }}</span>
-                <x-button class="text-center">
+                <span class="font-bold w-full text-center text-xl my-4">${{ $product->displayPrice() }}</span>
+                <x-button.primary class="text-center">
                     Add To Cart
-                </x-button>
+                </x-button.primary>
             </div>
         </div>
     </div>

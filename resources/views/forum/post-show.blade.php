@@ -27,9 +27,9 @@
                         name="body"
                     />
 
-                    <x-button>
+                    <x-button.primary>
                         Send
-                    </x-button>
+                    </x-button.primary>
                 </div>
             </form>
         </div>
