@@ -9,7 +9,7 @@
         <div class="grid grid-cols-4 gap-2 ">
             <div class="col-span-3 flex flex-col bg-white rounded shadow p-2">
                 <div class="flex justify-around">
-                    <img src="{{ $product->image_url }}" alt="{{ $product->title }}" loading="lazy"
+                    <img src="{{ Storage::url($product->media->path) }}" alt="{{ $product->title }}" loading="lazy"
                         class="object-cover h-[400px]"
                     />
                 </div>

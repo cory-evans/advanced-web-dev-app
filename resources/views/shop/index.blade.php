@@ -12,7 +12,7 @@
             <a class="flex flex-col" href="{{ route('shop.product.show', ['shopProduct' => $item->id]) }}">
                 <li class="flex-1 flex flex-col items-center bg-white rounded shadow p-2">
                     <div class="flex justify-around">
-                        <img src="{{ $item->image_url }}" alt="{{ $item->title }}" loading="lazy"
+                        <img src="{{ Storage::url($item->media->path) }}" alt="{{ $item->title }}" loading="lazy"
                             class="object-cover w-40 h-40"
                         />
                     </div>

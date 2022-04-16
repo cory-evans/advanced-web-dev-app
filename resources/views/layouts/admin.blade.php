@@ -24,6 +24,12 @@ function subnavClass($isActive) {
                     </a>
                 </li>
                 <li>
+                    <a class="{{ subnavClass(request()->routeIs('admin.media.index')) }}" href="{{ route('admin.media.index') }}">
+                        <span>Media</span>
+                        <span>&rsaquo;</span>
+                    </a>
+                </li>
+                <li>
                     <a class="{{ subnavClass(request()->routeIs('admin.forum.index')) }}" href="{{ route('admin.forum.index') }}">
                         <span>Forum</span>
                         <span>&rsaquo;</span>

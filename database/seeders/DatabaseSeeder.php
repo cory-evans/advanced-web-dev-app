@@ -4,13 +4,11 @@ namespace Database\Seeders;
 
 use App\Models\Forum\ForumPost;
 use App\Models\Forum\ForumPostComment;
+use App\Models\Media;
 use App\Models\Shop\ShopProduct;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,14 +19,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => 'admin',
-            'email' => 'admin@example.com',
-            'password' => Hash::make('password'),
-            'remember_token' => Str::random(10),
-            'role' => 'admin'
-        ]);
-
         User::factory()
             ->has(
                 ForumPost::factory()
@@ -58,6 +48,11 @@ class DatabaseSeeder extends Seeder
             ->create();
         ShopProduct::factory()
             ->count(30)
+            ->state(function (array $attributes, ShopProduct|null $fpc) {
+                return [
+                    'media_id' => Media::all()->random()->id
+                ];
+            })
             ->create();
     }
 }

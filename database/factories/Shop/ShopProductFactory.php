@@ -21,7 +21,6 @@ class ShopProductFactory extends Factory
             'description' => $this->faker->text(),
             'price_cents' => $this->faker->numberBetween(100, 100000),
             'is_featured' => $this->faker->optional($weight = 0.5, $default = false)->randomDigit(),
-            'image_url' => $this->faker->imageUrl(),
         ];
     }
 }
