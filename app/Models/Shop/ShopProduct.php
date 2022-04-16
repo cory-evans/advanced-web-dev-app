@@ -10,6 +10,6 @@ class ShopProduct extends Model
     use HasFactory;
 
     public function displayPrice() {
-        return number_format($this->price_cents / 1000, 2);
+        return number_format($this->price_cents / 100, 2);
     }
 }

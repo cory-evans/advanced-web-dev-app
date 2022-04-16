@@ -55,7 +55,7 @@
 
                     <x-slot name="content">
                         @if (Auth::user()->isAdmin())
-                        <x-dropdown-link :href="route('admin.index')">
+                        <x-dropdown-link :href="route('admin.products.index')">
                             Admin Panel
                         </x-dropdown-link>
                         @endif
@@ -105,7 +105,7 @@
             @auth
             @if (Auth::user()->isAdmin())
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('admin.index')">
+                <x-responsive-nav-link :href="route('admin.products.index')">
                     {{ __('Admin Panel') }}
                 </x-responsive-nav-link>
             </div>
