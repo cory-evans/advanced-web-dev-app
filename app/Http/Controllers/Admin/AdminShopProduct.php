@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreShopProductRequest;
 use App\Http\Requests\UpdateShopProductRequest;
+use App\Models\Media;
 use App\Models\Shop\ShopProduct;
 
 class AdminShopProduct extends Controller
@@ -38,7 +39,17 @@ class AdminShopProduct extends Controller
      */
     public function store(StoreShopProductRequest $request)
     {
-        //
+        $product = new ShopProduct();
+        $product->title = $request->title;
+        $product->description = $request->description;
+        $product->price_cents = $request->price_cents;
+        $product->is_featured = $request->has('is_featured');
+
+        $product->media_id = $request->image_id;
+
+        $product->save();
+
+        return redirect(route('admin.products.index'));
     }
 
     /**
@@ -72,14 +83,17 @@ class AdminShopProduct extends Controller
      */
     public function update(UpdateShopProductRequest $request, ShopProduct $product)
     {
-
         $product->title = $request->title;
         $product->description = $request->description;
         $product->price_cents = $request->price_cents;
+        $product->is_featured = $request->has('is_featured');
+
+        // get media from 'image_id'
+        $product->media_id = $request->image_id;
 
         $product->save();
 
-        return redirect(route('admin.products.edit', ['product' => $product]));
+        return redirect(route('admin.products.index'));
     }
 
     /**

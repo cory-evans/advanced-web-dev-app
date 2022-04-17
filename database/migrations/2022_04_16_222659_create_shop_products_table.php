@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->bigInteger('price_cents');
-            $table->boolean('is_featured');
+            $table->boolean('is_featured')->default(false);
             $table->foreignId('media_id')->references('id')->on('media');
         });
     }

@@ -1,8 +1,10 @@
 <x-admin-layout>
     <div class="bg-white overflow-hidden shadow-sm rounded sm:rounded-lg p-4">
-        <x-button.primary>
-            <a href="{{ route('admin.products.create') }}" class="block">Add New Product</a>
-        </x-button.primary>
+        <a href="{{ route('admin.products.create') }}">
+            <x-button.primary>
+                Add New Product
+            </x-button.primary>
+        </a>
         <ul class="mt-4">
             <li class="flex items-center gap-2 select-none">
                 <span class="w-8 text-right">ID</span>

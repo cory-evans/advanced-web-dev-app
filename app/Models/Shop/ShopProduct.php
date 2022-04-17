@@ -11,6 +11,10 @@ class ShopProduct extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'is_featured' => 'boolean',
+    ];
+
     public function displayPrice() {
         return number_format($this->price_cents / 100, 2);
     }

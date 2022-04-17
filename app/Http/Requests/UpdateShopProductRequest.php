@@ -28,6 +28,7 @@ class UpdateShopProductRequest extends FormRequest
             'title' => 'required|max:255',
             'description' => 'required',
             'price_cents' => 'required|integer|min:0',
+            'image_id' => 'required|integer'
         ];
     }
 }
