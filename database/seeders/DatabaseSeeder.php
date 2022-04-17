@@ -9,6 +9,7 @@ use App\Models\Shop\ShopProduct;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
@@ -46,6 +47,18 @@ class DatabaseSeeder extends Seeder
                 ];
             })
             ->create();
+
+        // scan the media storage folder for images
+        $files = Storage::allFiles('media');
+        for ($i=0; $i < count($files); $i++) {
+            $f = $files[$i];
+            $media = new Media();
+            $media->name = 'file_' . $i;
+            $media->path = $f;
+
+            $media->save();
+        }
+
         ShopProduct::factory()
             ->count(30)
             ->state(function (array $attributes, ShopProduct|null $fpc) {
