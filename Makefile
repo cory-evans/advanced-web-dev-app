@@ -7,3 +7,6 @@ seed:
 	@php artisan migrate:fresh
 	@php artisan db:seed --class="Database\Seeders\AdminAccount"
 	@php artisan db:seed --class="Database\Seeders\DatabaseSeeder"
+
+serve:
+	@php artisan serve --host=0.0.0.0
