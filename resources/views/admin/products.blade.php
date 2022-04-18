@@ -5,25 +5,30 @@
                 Add New Product
             </x-button>
         </a>
-        <ul class="mt-4">
-            <li class="flex items-center gap-2 select-none">
-                <span class="w-8 text-right">ID</span>
-                <span>TITLE</span>
-                <div class="flex-1"></div>
-                <span>PRICE</span>
-                <span class="text-transparent flex flex-nowrap items-center">EDIT<x-icons.chevron-right class="h-[1em]" /></span>
-            </li>
+
+        <table>
+            <thead>
+                <th class="text-right">ID</th>
+                <th class="text-left">TITLE</th>
+                <th class="text-right">PRICE</th>
+            </thead>
+
+            <tbody>
             @foreach ($products as $product)
-            <li>
-                <a class="flex items-center gap-2 hover:cursor-pointer hover:bg-gray-200 transition-colors" href="{{ route('admin.products.edit', ['product' => $product]) }}">
-                    <span class="w-8 text-right">{{ $product->id }}</span>
-                    <span class="overflow-x-hidden whitespace-nowrap">{{ $product->title }}</span>
-                    <div class="flex-1"></div>
-                    <span>{{ $product->displayPrice() }}</span>
-                    <span class="text-blue-500 flex flex-nowrap items-center">EDIT<x-icons.chevron-right class="h-[1em]" /></span>
-                </a>
-            </li>
+            <tr class="{{ $loop->even ? 'bg-gray-100' : '' }} cursor-pointer hover:bg-blue-500 hover:text-white py-1"
+                role="link"
+                data-href="{{ route('admin.products.edit', ['product' => $product]) }}"
+                onclick="window.open(`{{ route('admin.products.edit', ['product' => $product]) }}`, '_self')"
+            >
+                <td class="text-right px-1">{{ $product->id }}</td>
+                <td class="text-clip overflow-hidden max-w-0 w-[100%] whitespace-nowrap">{{ $product->title }}</td>
+                <td class="text-right px-1">${{ $product->displayPrice() }}</td>
+                <td>
+                    <x-icons.chevron-right class="h-[1em]"/>
+                </td>
+            </tr>
             @endforeach
-        </ul>
+            </tbody>
+        </table>
     </div>
 </x-admin-layout>

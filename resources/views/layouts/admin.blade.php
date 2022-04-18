@@ -15,30 +15,58 @@ function subnavClass($isActive) {
 	</x-slot>
 
     <div class="flex-1 flex p-4 gap-4">
-        <nav class="bg-white overflow-hidden shadow-sm rounded sm:rounded-lg">
+        <nav class="bg-white flex-shrink-0 overflow-hidden shadow-sm rounded sm:rounded-lg">
             <ul class="flex flex-col min-w-[200px] divide-y divide-gray-400 py-1">
-                <li>
+                <li class="flex flex-col">
                     <a class="{{ subnavClass(request()->routeIs('admin.products.index')) }}" href="{{ route('admin.products.index') }}">
                         <span>Products</span>
-                        <span>&rsaquo;</span>
+                        <x-icons.chevron-right class="h-[1em]" />
                     </a>
+                    <ul class="ml-6">
+                        <li>
+                            <a class="{{ subnavClass(request()->routeIs('admin.products.index')) }}" href="{{ route('admin.products.index') }}">
+                                <span>List All</span>
+                                <x-icons.chevron-right class="h-[1em]" />
+                            </a>
+                        </li>
+                        <li>
+                            <a class="{{ subnavClass(request()->routeIs('admin.products.create')) }}" href="{{ route('admin.products.create') }}">
+                                <span>Create</span>
+                                <x-icons.chevron-right class="h-[1em]" />
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-                <li>
+                <li class="flex flex-col">
                     <a class="{{ subnavClass(request()->routeIs('admin.media.index')) }}" href="{{ route('admin.media.index') }}">
                         <span>Media</span>
-                        <span>&rsaquo;</span>
+                        <x-icons.chevron-right class="h-[1em]" />
                     </a>
+                    <ul class="ml-6">
+                        <li>
+                            <a class="{{ subnavClass(request()->routeIs('admin.media.index')) }}" href="{{ route('admin.media.index') }}">
+                                <span>List All</span>
+                                <x-icons.chevron-right class="h-[1em]" />
+                            </a>
+                        </li>
+                        <li>
+                            <a class="{{ subnavClass(request()->routeIs('admin.media.create')) }}" href="{{ route('admin.media.create') }}">
+                                <span>Create</span>
+                                <x-icons.chevron-right class="h-[1em]" />
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li>
                     <a class="{{ subnavClass(request()->routeIs('admin.forum.index')) }}" href="{{ route('admin.forum.index') }}">
                         <span>Forum</span>
-                        <span>&rsaquo;</span>
+                        <x-icons.chevron-right class="h-[1em]" />
                     </a>
                 </li>
                 <li>
                     <a class="{{ subnavClass(request()->routeIs('admin.users.index')) }}" href="{{ route('admin.users.index') }}">
                         <span>Users</span>
-                        <span>&rsaquo;</span>
+                        <x-icons.chevron-right class="h-[1em]" />
                     </a>
                 </li>
             </ul>
