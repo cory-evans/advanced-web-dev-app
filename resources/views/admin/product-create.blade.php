@@ -50,9 +50,9 @@
 
             <div class="flex justify-between mt-8">
                 <div></div>
-                <x-button.primary type="submit">
+                <x-button :variant="'primary'" type="submit">
                     Create
-                </x-button.primary>
+                </x-button>
             </div>
         </form>
     </div>

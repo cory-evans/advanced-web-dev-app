@@ -1,9 +1,9 @@
 <x-admin-layout>
     <div class="bg-white overflow-hidden shadow-sm rounded sm:rounded-lg p-4">
         <a href="{{ route('admin.products.create') }}">
-            <x-button.primary>
+            <x-button :variant="'primary'">
                 Add New Product
-            </x-button.primary>
+            </x-button>
         </a>
         <ul class="mt-4">
             <li class="flex items-center gap-2 select-none">

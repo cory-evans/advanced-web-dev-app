@@ -50,21 +50,19 @@
 
             <div class="flex justify-between mt-8">
                 <script>
-                    function deleteOnClick() {
-                        if (confirm('Are you sure you want to delete this product?')) {
-                            axios.delete(`{{ route('admin.products.destroy', ['product' => $product]) }}`)
-                                .then(() => {
-                                    window.location = `{{ route('admin.products.index') }}`
-                                })
-                        }
+                    function deleteProductOnClick() {
+                        axios.delete(`{{ route('admin.products.destroy', ['product' => $product]) }}`)
+                            .then(() => {
+                                window.location = `{{ route('admin.products.index') }}`
+                            })
                     }
                 </script>
-                <x-button.danger type="button" onclick="deleteOnClick();">
-                    Delete Product
-                </x-button.danger>
-                <x-button.primary type="submit">
+                <x-modal :onclick="'deleteProductOnClick();'" :variant="'danger'" :btnText="'Delete'">
+                    Are you sure you want to delete this product?
+                </x-modal>
+                <x-button :variant="'primary'" type="submit">
                     Update
-                </x-button.primary>
+                </x-button>
             </div>
         </form>
     </div>

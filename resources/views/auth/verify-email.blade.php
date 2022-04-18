@@ -21,9 +21,9 @@
                 @csrf
 
                 <div>
-                    <x-button.primary>
+                    <x-button :variant="'primary'">
                         {{ __('Resend Verification Email') }}
-                    </x-button.primary>
+                    </x-button>
                 </div>
             </form>
 

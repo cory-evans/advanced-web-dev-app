@@ -27,9 +27,9 @@
                         name="body"
                     />
 
-                    <x-button.primary>
+                    <x-button :variant="'primary'">
                         Send
-                    </x-button.primary>
+                    </x-button>
                 </div>
             </form>
         </div>

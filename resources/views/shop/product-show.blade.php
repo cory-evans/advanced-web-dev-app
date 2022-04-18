@@ -18,9 +18,9 @@
 
             <div class="bg-white rounded shadow p-2 flex flex-col">
                 <span class="font-bold w-full text-center text-xl my-4">${{ $product->displayPrice() }}</span>
-                <x-button.primary class="text-center">
+                <x-button :variant="'primary'" class="text-center">
                     Add To Cart
-                </x-button.primary>
+                </x-button>
             </div>
         </div>
     </div>

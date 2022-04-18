@@ -1,7 +1,7 @@
 <x-admin-layout>
     <div class="bg-white overflow-hidden shadow-sm rounded sm:rounded-lg p-4">
         <a href="{{ route('admin.media.create') }}">
-            <x-button.primary>Upload A New Image</x-button.primary>
+            <x-button :variant="'primary'">Upload A New Image</x-button>
         </a>
 
         <ul class="mt-4 grid grid-cols-6 gap-2">

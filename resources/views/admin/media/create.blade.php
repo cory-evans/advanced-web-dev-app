@@ -13,9 +13,9 @@
                 @enderror
             </div>
 
-            <x-button.primary>
+            <x-button :variant="'primary'">
                 Upload
-            </x-button.primary>
+            </x-button>
         </form>
     </div>
 </x-admin-layout>

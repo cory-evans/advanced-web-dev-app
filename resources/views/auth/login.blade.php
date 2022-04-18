@@ -47,9 +47,9 @@
                     </a>
                 @endif
 
-                <x-button.primary class="ml-3">
+                <x-button :variant="'primary'" class="ml-3">
                     {{ __('Log in') }}
-                </x-button.primary>
+                </x-button>
             </div>
         </form>
     </x-auth-card>
