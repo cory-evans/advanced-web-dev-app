@@ -13,7 +13,7 @@
                 @enderror
             </div>
 
-            <x-button :variant="'primary'">
+            <x-button :variant="'primary'" type="submit">
                 Upload
             </x-button>
         </form>

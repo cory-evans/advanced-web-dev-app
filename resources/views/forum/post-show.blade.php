@@ -27,7 +27,7 @@
                         name="body"
                     />
 
-                    <x-button :variant="'primary'">
+                    <x-button :variant="'primary'" type="submit">
                         Send
                     </x-button>
                 </div>

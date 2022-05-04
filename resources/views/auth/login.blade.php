@@ -47,7 +47,7 @@
                     </a>
                 @endif
 
-                <x-button :variant="'primary'" class="ml-3">
+                <x-button :variant="'primary'" type="submit" class="ml-3">
                     {{ __('Log in') }}
                 </x-button>
             </div>
