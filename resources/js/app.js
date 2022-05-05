@@ -7,33 +7,38 @@ window.Alpine = Alpine;
 
 Alpine.plugin(persist);
 Alpine.store('shopping_cart', {
-    items: Alpine.$persist([]).as('shopping_cart_items'),
-    add(id, name, price_cents) {
-        var qty = 1
-        const found = this.items.filter(i => i.id == id)
-        if (found.length > 0) {
-            // item is already the the cart
-            qty = found[0].qty + 1
+    items: Alpine.$persist({}).as('shopping_cart_items'),
+    add(id, name, price_cents, image) {
+        if (this.items[id]) {
+            // already exists
+            this.items[id].qty++
+            return
         }
-        this.remove(id)
-        this.items.push({
-            id,
+
+        this.items[id] = {
             name,
             price_cents,
-            qty: qty
-        })
+            image,
+            qty: 1
+        }
+    },
+    increment(id) {
+        this.items[id].qty++
+    },
+    decrement(id) {
+        this.items[id].qty--
     },
     remove(id) {
-        this.items = this.items.filter((item) => item.id != id)
+        delete this.items[id]
     },
     clearCart() {
-        this.items = [];
+        this.items = {};
     }
 })
 
 Alpine.data('shopping_cart_dropdown', function () {
     return {
-        expanded: true,
+        expanded: false,
     }
 })
 

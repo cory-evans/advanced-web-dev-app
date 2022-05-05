@@ -22,7 +22,8 @@
                     :variant="'primary'"
                     class="text-center"
                     x-data="{}"
-                    @click="$store.shopping_cart.add({{ $product->id }}, `{{ $product->title }}`, {{ $product->price_cents }})"
+                    {{-- add(id, name, price_cents, image) --}}
+                    @click="$store.shopping_cart.add({{ $product->id }}, `{{ $product->title }}`, {{ $product->price_cents }}, `{{ Storage::url($product->media->path) }}`)"
                 >
                     Add To Cart
                 </x-button>
