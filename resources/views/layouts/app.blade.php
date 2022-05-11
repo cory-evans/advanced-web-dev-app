@@ -20,7 +20,9 @@
         <div class="min-h-screen bg-gray-100 flex flex-col">
             @include('layouts.navigation')
 
+            @isset($header)
             {{ $header }}
+            @endisset
 
             <!-- Page Content -->
             <main class="flex-1 flex flex-col">

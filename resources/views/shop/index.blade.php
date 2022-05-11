@@ -1,8 +1,6 @@
 <x-shop-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Shop') }}
-        </h2>
+        {{ __('Shop') }}
     </x-slot>
 
     <div class="max-w-7xl mb-8 mx-auto sm:px-6 lg:px-8">

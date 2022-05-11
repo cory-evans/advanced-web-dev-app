@@ -1,8 +1,6 @@
 <x-shop-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ $product->title }}
-        </h2>
+        {{ $product->title }}
     </x-slot>
 
     <div class="my-4 max-w-5xl mx-auto sm:px-6 lg:px-8">
