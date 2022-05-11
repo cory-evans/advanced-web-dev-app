@@ -3,6 +3,7 @@
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ForumPostCommentController;
 use App\Http\Controllers\ForumPostController;
+use App\Http\Controllers\ShopOrderController;
 use App\Http\Controllers\ShopProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ShopProductController::class, 'index'])->name('shop');
 Route::prefix('/shop')->group(function () {
     Route::get('/{shopProduct}', [ShopProductController::class, 'show'])->name('shop.product.show');
+});
+
+Route::prefix('/checkout')->name('checkout.')->group(function() {
+    Route::get('/', [ShopOrderController::class, 'checkout'])->name('view');
+    Route::post('/', [ShopOrderController::class, 'store'])->name('store');
+    Route::get('/shipping', [ShopOrderController::class, 'shipping'])->name('shipping');
 });
 
 Route::prefix('/account')->group(function() {
