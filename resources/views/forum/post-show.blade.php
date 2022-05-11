@@ -1,8 +1,6 @@
-<x-app-layout>
+<x-forum-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight flex items-center space-x-3">
-            {{ __('Post') }}
-        </h2>
+        {{ __('Post') }}
     </x-slot>
     <div class="max-w-3xl mx-auto my-4 flex flex-col gap-4">
         <div class="bg-white rounded shadow p-4">
@@ -52,4 +50,4 @@
             </ul>
         </div>
     </div>
-</x-app-layout>
+</x-forum-layout>

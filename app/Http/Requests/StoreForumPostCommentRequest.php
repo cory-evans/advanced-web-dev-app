@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreForumPostCommentRequest extends FormRequest
@@ -13,7 +14,7 @@ class StoreForumPostCommentRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return Auth::check();
     }
 
     /**

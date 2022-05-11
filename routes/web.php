@@ -30,8 +30,14 @@ Route::prefix('/account')->group(function() {
 Route::prefix('/forum')->group(function() {
     Route::get('/', [ForumPostController::class, 'index'])
         ->name('forum');
+
     Route::get('/post', [ForumPostController::class, 'create'])
+        ->middleware('auth')
         ->name('forum.post.create');
+    Route::post('/post', [ForumPostController::class, 'store'])
+        ->middleware('auth')
+        ->name('forum.post.store');
+
     Route::get('/post/{forumPost}', [ForumPostController::class, 'show'])
         ->name('forum.post.show');
     Route::post('/post/{forumPost}/comment', [ForumPostCommentController::class, 'store'])

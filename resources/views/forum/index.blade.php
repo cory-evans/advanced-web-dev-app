@@ -1,8 +1,6 @@
-<x-app-layout>
+<x-forum-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Forum Posts') }}
-        </h2>
+        {{ __('Forum Posts') }}
     </x-slot>
     <ul class="max-w-3xl mx-auto my-4 flex flex-col gap-3">
         <x-forum.page-control :page=$page />
@@ -26,4 +24,4 @@
         @endforeach
         <x-forum.page-control :page=$page />
     </ul>
-</x-app-layout>
+</x-forum-layout>

@@ -1,5 +1,9 @@
 @php
 
+if (!isset($variant)) {
+    $variant = "primary";
+}
+
 $className = 'px-4 py-2 border border-transparent rounded-md font-semibold text-xs uppercase tracking-widest focus:outline-none focus:ring disabled:opacity-25 transition ease-in-out duration-150';
 if ($variant == 'danger') {
     $className = $className . ' text-white bg-red-800 hover:bg-red-700 active:bg-red-900 focus:border-red-900 ring-red-300';

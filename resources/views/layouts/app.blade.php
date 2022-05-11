@@ -20,18 +20,7 @@
         <div class="min-h-screen bg-gray-100 flex flex-col">
             @include('layouts.navigation')
 
-            <!-- Page Heading -->
-            @isset($header)
-            <header class="bg-white shadow">
-                <div class=" flex items-center justify-between max-w-7xl mx-auto">
-                    <div class="py-6 sm:px-6">
-                        {{ $header }}
-                    </div>
-
-                    <x-shopping-cart />
-                </div>
-            </header>
-            @endisset
+            {{ $header }}
 
             <!-- Page Content -->
             <main class="flex-1 flex flex-col">
