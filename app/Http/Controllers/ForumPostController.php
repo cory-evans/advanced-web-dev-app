@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreForumPostRequest;
 use App\Http\Requests\UpdateForumPostRequest;
 use App\Models\Forum\ForumPost;
+use Auth;
 use Illuminate\Http\Request;
 
 class ForumPostController extends Controller
@@ -50,7 +51,15 @@ class ForumPostController extends Controller
      */
     public function store(StoreForumPostRequest $request)
     {
-        //
+        $post = new ForumPost();
+        $post->title = $request->title;
+        $post->body = $request->body;
+
+        $post->user_id = Auth::user()->id;
+
+        $post->save();
+
+        return redirect(route('forum.post.show', ['forumPost' => $post]));
     }
 
     /**
