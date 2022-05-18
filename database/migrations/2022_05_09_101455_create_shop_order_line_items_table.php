@@ -15,9 +15,13 @@ return new class extends Migration
     {
         Schema::create('shop_order_line_items', function (Blueprint $table) {
             $table->id();
+            $table->timestamps();
 
-            $table->foreignId('order_id')->references('id')->on('shop_orders');
+            $table->foreignId('order_id')->references('id')->on('shop_orders')->cascadeOnDelete();
             $table->foreignId('product_id')->references('id')->on('shop_products');
+
+            $table->integer('qty')->default(1);
+            $table->integer('price_cents');
         });
     }
 

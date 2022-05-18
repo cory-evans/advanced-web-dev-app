@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreOrderShipping;
+use App\Http\Requests\StoreOrderRequest;
 use App\Models\Shop\ShopOrder;
+use App\Models\Shop\ShopOrderLineItem;
+use Auth;
 use Illuminate\Http\Request;
 
 class ShopOrderController extends Controller
@@ -18,28 +20,37 @@ class ShopOrderController extends Controller
         return view('shop.checkout.view');
     }
 
-    public function store(Request $request)
+    public function store(StoreOrderRequest $request)
     {
         $shopOrder = new ShopOrder();
-        $shopOrder->status = 'draft';
+        $shopOrder->status = 'placed';
+        $shopOrder->total_price = 0;
+        $shopOrder->email = $request->input('email');
         $shopOrder->save();
 
         $items = json_decode($request->input('items'));
 
-        return redirect(route('checkout.shipping', ['shopOrder' => $shopOrder]));
+        $total_price = 0;
+
+        foreach ($items as $key => $value) {
+            $orderLineItem = new ShopOrderLineItem();
+            $orderLineItem->product_id = $key;
+            $orderLineItem->order_id = $shopOrder->id;
+            $orderLineItem->price_cents = 0;
+            $orderLineItem->qty = $value->qty;
+            $orderLineItem->save();
+
+            $total_price += $orderLineItem->product->price_cents;
+        }
+
+        $shopOrder->total_price = $total_price;
+        $shopOrder->save();
+
+        return redirect(route('checkout.finished', ['shopOrder' => $shopOrder]));
     }
 
-    public function shipping(ShopOrder $shopOrder)
+    public function finished(ShopOrder $shopOrder)
     {
-        return view('shop.checkout.shipping');
-    }
-    public function store_shipping(ShopOrder $shopOrder, StoreOrderShipping $storeOrderShipping)
-    {
-        return redirect(route('checkout.payment', ['shopOrder' => $shopOrder]));
-    }
-
-    public function payment(ShopOrder $shopOrder)
-    {
-        return view('shop.checkout.payment', ['shopOrder' => $shopOrder]);
+        return view('shop.checkout.finished', ['shopOrder' => $shopOrder]);
     }
 }

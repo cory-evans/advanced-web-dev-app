@@ -19,7 +19,7 @@ return new class extends Migration
 
             $table->string('status');
             $table->integer('total_price');
-            $table->foreignId('user_id')->references('id')->on('users');
+            $table->string('email');
         });
     }
 

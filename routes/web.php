@@ -26,7 +26,7 @@ Route::prefix('/shop')->group(function () {
 Route::prefix('/checkout')->name('checkout.')->group(function() {
     Route::get('/', [ShopOrderController::class, 'checkout'])->name('view');
     Route::post('/', [ShopOrderController::class, 'store'])->name('store');
-    Route::get('/shipping', [ShopOrderController::class, 'shipping'])->name('shipping');
+    Route::get('/finished/{shopOrder}', [ShopOrderController::class, 'finished'])->name('finished');
 });
 
 Route::prefix('/account')->group(function() {

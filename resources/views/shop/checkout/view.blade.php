@@ -1,8 +1,6 @@
-<x-app-layout>
+<x-shop-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Checkout
-        </h2>
+        Checkout
     </x-slot>
 
     <div class="bg-white rounded-sm my-4 max-w-5xl mx-auto p-2 sm:p-6 lg:p-8" x-data="{}">
@@ -53,15 +51,22 @@
                     <span>$<span x-text="$store.shopping_cart.calcTotalPretty()"></span></span>
                 </div>
             </div>
-            <div class="mt-4 flex items-center justify-end">
+            <div class="mt-4">
+                <div class="flex flex-col">
+                    <x-label for="email">Email</x-label>
+                    @auth
+                    <x-input type="email" name="email" id="email" required value="{{ Auth::user()->email }}" />
+                    @else
+                    <x-input type="email" name="email" id="email" required />
+                    @endauth
+                </div>
+            </div>
+            <div class="mt-8 flex items-center justify-end">
                 <x-button :variant="'primary'" type="submit">
-                    <div class="flex items-center">
-                        <span>Shipping</span>
-                        <x-icons.arrow-right class="h-6" />
-                    </div>
+                    Place Order
                 </x-button>
             </div>
             @csrf
         </form>
     </div>
-</x-app-layout>
+</x-shop-layout>
