@@ -11,6 +11,14 @@ class ShopProduct extends Model
 {
     use HasFactory;
 
+    public $fillable = [
+        'title',
+        'description',
+        'price_cents',
+        'is_featured',
+        'media_id'
+    ];
+
     protected $casts = [
         'is_featured' => 'boolean',
     ];

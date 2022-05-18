@@ -10,10 +10,11 @@ class ShopOrder extends Model
 {
     use HasFactory;
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+    public $fillable = [
+        'status',
+        'total_price',
+        'email'
+    ];
 
     public function line_items() {
         return $this->hasMany(ShopOrderLineItem::class, 'order_id');

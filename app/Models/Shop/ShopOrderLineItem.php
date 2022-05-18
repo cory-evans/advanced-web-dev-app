@@ -9,6 +9,13 @@ class ShopOrderLineItem extends Model
 {
     use HasFactory;
 
+    public $fillable = [
+        'qty',
+        'price_cents',
+        'order_id',
+        'product_id'
+    ];
+
     public function order() {
         return $this->belongsTo(ShopOrder::class);
     }
