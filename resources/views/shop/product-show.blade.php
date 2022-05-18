@@ -27,5 +27,9 @@
                 </x-button>
             </div>
         </div>
+
+        <div class="mt-2 p-2 bg-white rounded shadow">
+            <pre class="font-sans">{{ $product->description }}</pre>
+        </div>
     </div>
 </x-shop-layout>
