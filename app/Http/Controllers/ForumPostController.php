@@ -18,18 +18,8 @@ class ForumPostController extends Controller
      */
     public function index(Request $request)
     {
-        $pageNumStr = $request->query('page', '1');
-        try {
-            $page = intval($pageNumStr);
-        } catch (\Throwable $th) {
-            $page = 1;
-        }
-
-        $amountPerPage = 25;
-        $skip = ($amountPerPage * $page) - $amountPerPage;
         return view('forum.index', [
-            'posts' => ForumPost::orderBy('created_at')->skip($skip)->take($amountPerPage)->get(),
-            'page' => $page
+            'posts' => ForumPost::orderBy('created_at')->paginate(25)
         ]);
     }
 
