@@ -19,9 +19,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [ShopProductController::class, 'index'])->name('shop');
-Route::prefix('/shop')->group(function () {
+Route::prefix('/product')->group(function () {
     Route::get('/{shopProduct}', [ShopProductController::class, 'show'])->name('shop.product.show');
 });
+
+Route::get('/category/{category}', [ShopProductController::class, 'index'])->name('shop.category');
 
 Route::prefix('/checkout')->name('checkout.')->group(function() {
     Route::get('/', [ShopOrderController::class, 'checkout'])->name('view');

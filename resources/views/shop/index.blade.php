@@ -24,18 +24,9 @@
         <h1 class="border-b border-black font-semibold text-2xl mb-2 mt-6">Product Categories</h1>
 
         <div class="grid gap-2 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
-            <div class="p-2 cursor-pointer bg-white rounded shadow hover:bg-gray-50 shadow-md ">Computers & Tablets</div>
-            <div class="p-2 cursor-pointer bg-white rounded shadow hover:bg-gray-50 shadow-md ">PC Peripherals & Accessories</div>
-            <div class="p-2 cursor-pointer bg-white rounded shadow hover:bg-gray-50 shadow-md ">PC Parts</div>
-            <div class="p-2 cursor-pointer bg-white rounded shadow hover:bg-gray-50 shadow-md ">Networking</div>
-            <div class="p-2 cursor-pointer bg-white rounded shadow hover:bg-gray-50 shadow-md ">Printing & Office</div>
-            <div class="p-2 cursor-pointer bg-white rounded shadow hover:bg-gray-50 shadow-md ">Phones & Accessories</div>
-            <div class="p-2 cursor-pointer bg-white rounded shadow hover:bg-gray-50 shadow-md ">TV & AV</div>
-            <div class="p-2 cursor-pointer bg-white rounded shadow hover:bg-gray-50 shadow-md ">Headphones & Audio</div>
-            <div class="p-2 cursor-pointer bg-white rounded shadow hover:bg-gray-50 shadow-md ">Gaming</div>
-            <div class="p-2 cursor-pointer bg-white rounded shadow hover:bg-gray-50 shadow-md ">Cameras & Drones</div>
-            <div class="p-2 cursor-pointer bg-white rounded shadow hover:bg-gray-50 shadow-md ">Smart Home & Security</div>
-            <div class="p-2 cursor-pointer bg-white rounded shadow hover:bg-gray-50 shadow-md ">Toys, Hobbies & STEM</div>
+            @foreach($categories as $cat)
+            <a href="{{ route('shop.category', ['category' => $cat]) }}" class="p-2 cursor-pointer bg-white rounded shadow hover:bg-gray-50 shadow-md">{{ $cat->name }}</a>
+            @endforeach
         </div>
     </div>
 </x-shop-layout>

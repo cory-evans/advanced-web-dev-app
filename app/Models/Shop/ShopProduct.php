@@ -5,7 +5,6 @@ namespace App\Models\Shop;
 use App\Models\Media;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ShopProduct extends Model
 {
@@ -16,7 +15,8 @@ class ShopProduct extends Model
         'description',
         'price_cents',
         'is_featured',
-        'media_id'
+        'media_id',
+        'category_id'
     ];
 
     protected $casts = [
@@ -29,5 +29,9 @@ class ShopProduct extends Model
 
     public function media() {
         return $this->BelongsTo(Media::class);
+    }
+
+    public function category() {
+        return $this->belongsTo(ShopProductCategory::class);
     }
 }

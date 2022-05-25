@@ -6,9 +6,10 @@ use App\Models\Forum\ForumPost;
 use App\Models\Forum\ForumPostComment;
 use App\Models\Media;
 use App\Models\Shop\ShopProduct;
+use App\Models\Shop\ShopProductCategory;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
@@ -59,11 +60,33 @@ class DatabaseSeeder extends Seeder
             $media->save();
         }
 
+        // create categories
+        $categories = [
+            'Computers & Tablets',
+            'PC Peripherals & Accessories',
+            'PC Parts',
+            'Networking',
+            'Printing & Office',
+            'Phones & Accessories',
+            'TV & AV',
+            'Headphones & Audio',
+            'Gaming',
+            'Cameras & Drones',
+            'Smart Home & Security',
+            'Toys, Hobbies & STEM'
+        ];
+        foreach ($categories as $cat) {
+            ShopProductCategory::create([
+                'name' => $cat
+            ]);
+        }
+
         ShopProduct::factory()
             ->count(30)
             ->state(function (array $attributes, ShopProduct|null $fpc) {
                 return [
-                    'media_id' => Media::all()->random()->id
+                    'media_id' => Media::all()->random()->id,
+                    'category_id' => ShopProductCategory::all()->random()->id
                 ];
             })
             ->create();

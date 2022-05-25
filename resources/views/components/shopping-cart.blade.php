@@ -3,7 +3,7 @@
         <x-icons.shopping-cart class="h-8 w-8 stroke-gray-600" />
         <x-icons.chevron-down ::class="'h-6 w-6 stroke-gray-600 transition-transform ' + (expanded ? '' : 'rotate-180') " />
     </button>
-    <div class="absolute top-full right-0" style="display: none;" x-show="expanded" @click.outside="expanded = false">
+    <div class="absolute top-full right-0 z-10" style="display: none;" x-show="expanded" @click.outside="expanded = false">
         <div class="bg-white shadow-lg rounded p-2 border">
             <ul style="min-width: 400px;">
                 <template x-for="[id, item] in Object.entries($store.shopping_cart.items)">
