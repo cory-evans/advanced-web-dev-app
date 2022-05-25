@@ -4,6 +4,17 @@
     </x-slot>
 
     <div class="my-4 max-w-5xl mx-auto sm:px-6 lg:px-8">
+        <div class="flex space-x-2 mb-2">
+            <a href="{{ route('shop') }}"
+                class="hover:underline"
+            >All Products</a>
+            <span>&gt;</span>
+            <a href="{{ route('shop.category', ['category' => $product->category]) }}"
+                class="hover:underline"
+            >
+                {{ $product->category->name }}
+            </a>
+        </div>
         <div class="grid grid-cols-4 gap-2 ">
             <div class="col-span-3 flex flex-col bg-white rounded shadow p-2">
                 <div class="flex justify-around">
