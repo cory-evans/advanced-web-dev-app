@@ -7,6 +7,7 @@ use App\Http\Requests\StoreShopProductRequest;
 use App\Http\Requests\UpdateShopProductRequest;
 use App\Models\Media;
 use App\Models\Shop\ShopProduct;
+use App\Models\Shop\ShopProductCategory;
 
 class AdminShopProduct extends Controller
 {
@@ -28,7 +29,8 @@ class AdminShopProduct extends Controller
      */
     public function create()
     {
-        return view('admin.product-create');
+        $categories = ShopProductCategory::all();
+        return view('admin.product-create', ['categories' => $categories]);
     }
 
     /**
@@ -46,6 +48,7 @@ class AdminShopProduct extends Controller
         $product->is_featured = $request->has('is_featured');
 
         $product->media_id = $request->image_id;
+        $product->category_id = $request->product_cat;
 
         $product->save();
 
@@ -71,7 +74,8 @@ class AdminShopProduct extends Controller
      */
     public function edit(ShopProduct $product)
     {
-        return view('admin.product-edit', ['product' => $product]);
+        $categories = ShopProductCategory::all();
+        return view('admin.product-edit', ['product' => $product, 'categories' => $categories]);
     }
 
     /**
@@ -90,6 +94,7 @@ class AdminShopProduct extends Controller
 
         // get media from 'image_id'
         $product->media_id = $request->image_id;
+        $product->category_id = $request->product_cat;
 
         $product->save();
 

@@ -48,6 +48,15 @@
                 </ul>
             </div>
 
+            <div class="flex flex-col">
+                <label for="product-cat">Product Category</label>
+                <select name="product_cat" id="product-cat">
+                @foreach ($categories as $cat)
+                    <option value="{{ $cat->id }}" @if ($product->category_id == $cat->id) selected @endif>{{ $cat->name }}</option>
+                @endforeach
+                </select>
+            </div>
+
             <div class="flex justify-between mt-8">
                 <script>
                     function deleteProductOnClick() {
