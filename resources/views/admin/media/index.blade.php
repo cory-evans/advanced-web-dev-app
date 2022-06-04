@@ -4,15 +4,23 @@
             <x-button :variant="'primary'">Upload A New Image</x-button>
         </a>
 
+        {{ $mediaPaginate->links() }}
+
         <ul class="mt-4 grid grid-cols-6 gap-2">
-            @foreach ($media as $img)
-            <li class="flex flex-col justify-between items-center bg-white shadow p-1 rounded-sm">
-                <img src="{{ Storage::url($img->path); }}" alt="{{ $img->name }}"
+            @foreach ($mediaPaginate->items() as $media)
+            <li class="flex flex-col justify-between items-center bg-white shadow p-1 rounded-sm cursor-pointer"
+                role="link"
+                data-href="{{ route('admin.media.show', ['medium' => $media]) }}"
+                onclick="window.open(`{{ route('admin.media.show', ['medium' => $media]) }}`, '_self')"
+            >
+                <img src="{{ Storage::url($media->path); }}" alt="{{ $media->name }}"
                     class="object-contain w-full aspect-square"
-                >
-                <span>{{ $img->name }}</span>
+                    >
+                <span>{{ $media->name }}</span>
             </li>
             @endforeach
         </ul>
+
+        {{ $mediaPaginate->links() }}
     </div>
 </x-admin-layout>

@@ -16,8 +16,8 @@ class MediaController extends Controller
      */
     public function index()
     {
-        $images = Media::orderBy('created_at')->take(50)->get();
-        return view('admin.media.index', ['media' => $images]);
+        $mediaPaginate = Media::orderBy('created_at')->paginate(50);
+        return view('admin.media.index', ['mediaPaginate' => $mediaPaginate]);
     }
 
     /**
@@ -55,9 +55,9 @@ class MediaController extends Controller
      * @param  \App\Models\Media  $media
      * @return \Illuminate\Http\Response
      */
-    public function show(Media $media)
+    public function show(Media $medium)
     {
-        //
+        return view('admin.media.show', ['media' => $medium]);
     }
 
     /**
@@ -89,9 +89,9 @@ class MediaController extends Controller
      * @param  \App\Models\Media  $media
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Media $media)
+    public function destroy(Media $medium)
     {
-        //
+        $medium->delete();
     }
 
     public function search(Request $request) {
