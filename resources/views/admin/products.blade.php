@@ -6,6 +6,8 @@
             </x-button>
         </a>
 
+        {{ $products->links() }}
+        
         <table>
             <thead>
                 <th class="text-right">ID</th>
@@ -14,7 +16,7 @@
             </thead>
 
             <tbody>
-            @foreach ($products as $product)
+            @foreach ($products->items() as $product)
             <tr class="{{ $loop->even ? 'bg-gray-100' : '' }} cursor-pointer hover:bg-blue-500 hover:text-white py-1"
                 role="link"
                 data-href="{{ route('admin.products.edit', ['product' => $product]) }}"
@@ -30,5 +32,7 @@
             @endforeach
             </tbody>
         </table>
+
+        {{ $products->links() }}
     </div>
 </x-admin-layout>

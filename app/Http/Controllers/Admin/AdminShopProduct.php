@@ -18,7 +18,7 @@ class AdminShopProduct extends Controller
      */
     public function index()
     {
-        $products = ShopProduct::orderBy('id')->take(50)->get();
+        $products = ShopProduct::orderBy('id')->paginate(50);
         return view('admin.products', ['products' => $products]);
     }
 

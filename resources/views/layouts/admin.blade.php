@@ -8,11 +8,15 @@ function subnavClass($isActive) {
 }
 @endphp
 <x-app-layout>
-	<x-slot name="header">
-		<h2 class="font-semibold text-xl text-gray-800 leading-tight">
-			{{__('Admin Panel')}}
-		</h2>
-	</x-slot>
+    <x-slot name="header">
+        <header class="bg-white shadow">
+            <div class="flex items-center justify-between max-w-7xl mx-auto py-6 sm:px-6">
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                    {{__('Admin Panel')}}
+                </h2>
+            </div>
+        </header>
+    </x-slot>
 
     <div class="flex-1 flex p-4 gap-4">
         <nav class="bg-white flex-shrink-0 overflow-hidden shadow-sm rounded sm:rounded-lg">
@@ -58,14 +62,14 @@ function subnavClass($isActive) {
                     </ul>
                 </li>
                 <li>
-                    <a class="{{ subnavClass(request()->routeIs('admin.forum.index')) }}" href="{{ route('admin.forum.index') }}">
-                        <span>Forum</span>
+                    <a class="{{ subnavClass(request()->routeIs('admin.users.index')) }}" href="{{ route('admin.users.index') }}">
+                        <span>Users</span>
                         <x-icons.chevron-right class="h-[1em]" />
                     </a>
                 </li>
                 <li>
-                    <a class="{{ subnavClass(request()->routeIs('admin.users.index')) }}" href="{{ route('admin.users.index') }}">
-                        <span>Users</span>
+                    <a class="{{ subnavClass(request()->routeIs('admin.orders.index')) }}" href="{{ route('admin.orders.index') }}">
+                        <span>Orders</span>
                         <x-icons.chevron-right class="h-[1em]" />
                     </a>
                 </li>

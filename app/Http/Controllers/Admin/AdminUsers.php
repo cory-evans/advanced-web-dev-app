@@ -16,7 +16,8 @@ class AdminUsers extends Controller
      */
     public function index()
     {
-        return view('admin.users');
+        $users = User::orderBy('id')->paginate(50);
+        return view('admin.users', ['users' => $users]);
     }
 
     /**
@@ -48,7 +49,9 @@ class AdminUsers extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view('admin.user-show', [
+            'user' => $user
+        ]);
     }
 
     /**
